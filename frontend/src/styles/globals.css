@@ -1,0 +1,189 @@
+/* frontend/src/styles/globals.css */
+
+/* Import font Inter dari Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Variabel CSS untuk Desain Sistem */
+:root {
+  /* Warna Primer */
+  --primary-green: #4caf50; /* Hijau Aksen yang segar dan terang */
+  --primary-dark-green: #388e3c; /* Variasi lebih gelap untuk hover/active */
+  --primary-light-green: #81c784; /* Variasi lebih terang */
+  --clean-white: #ffffff;
+  --pale-white: #f8f9fa;
+
+  /* Warna Pendukung / Netral */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --dark-footer: #333333; /* Warna gelap untuk footer */
+
+  /* Warna Fungsional */
+  --success-color: #28a745; /* Sedikit berbeda dari primary green agar jelas */
+  --warning-color: #ffc107; /* Oranye lembut */
+  --danger-color: #dc3545; /* Merah yang tidak terlalu mencolok */
+  --info-color: #17a2b8; /* Biru info */
+
+  /* Sistem Spasi */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 3rem; /* 48px */
+
+  /* Tipografi */
+  --font-family-base: "Inter", sans-serif;
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 1.875rem;
+  --font-4xl: 2.25rem;
+
+  /* Efek */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+/* Reset CSS dasar & gaya umum */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+  color: var(--gray-800);
+  background-color: var(--pale-white); /* Latar belakang utama */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600; /* Inter SemiBold */
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  color: var(--gray-900);
+}
+
+h1 {
+  font-size: var(--font-4xl);
+}
+h2 {
+  font-size: var(--font-3xl);
+}
+h3 {
+  font-size: var(--font-2xl);
+}
+h4 {
+  font-size: var(--font-xl);
+}
+h5 {
+  font-size: var(--font-lg);
+}
+h6 {
+  font-size: var(--font-base);
+}
+
+p {
+  font-size: var(--font-base);
+  margin-bottom: var(--spacing-sm);
+  color: var(--gray-700);
+}
+
+a {
+  color: var(--primary-green);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-dark-green);
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-family-base);
+  font-weight: 500; /* Inter Medium */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Gaya dasar untuk form input */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-base);
+  font-size: var(--font-base);
+  color: var(--gray-800);
+  background-color: var(--clean-white);
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(var(--primary-green-rgb, 76, 175, 80), 0.25); /* rgba dari hijau primer */
+}
+
+/* Helper class for flexbox */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Untuk menghitung RGB dari warna utama untuk box-shadow */
+@supports (color: color-mix(in srgb, red 50%, blue 50%)) {
+  :root {
+    --primary-green-rgb: 76, 175, 80; /* RGB dari #4CAF50 */
+  }
+}

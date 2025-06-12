@@ -1,0 +1,105 @@
+/* frontend/src/styles/pages/Login.module.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--pale-white); /* Latar belakang aplikasi */
+  padding: var(--spacing-md);
+}
+
+.card {
+  background-color: var(--clean-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 400px; /* Lebar maksimal form */
+  text-align: center;
+}
+
+.title {
+  font-size: var(--font-3xl);
+  margin-bottom: var(--spacing-xl);
+  color: var(--primary-green); /* Warna judul sesuai tema */
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-sm);
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-base);
+  color: var(--gray-800);
+  background-color: var(--clean-white);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(var(--primary-green-rgb, 76, 175, 80), 0.25);
+}
+
+.button {
+  background-color: var(--primary-green);
+  color: var(--clean-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-lg);
+  font-weight: 600;
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--primary-dark-green);
+  transform: translateY(-2px); /* Efek hover ringan */
+}
+
+.linkText {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-sm);
+  color: var(--gray-600);
+}
+
+.link {
+  color: var(--primary-green);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: var(--primary-dark-green);
+  text-decoration: underline;
+}
+
+/* Responsivitas dasar */
+@media (max-width: 600px) {
+  .card {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+  }
+  .title {
+    font-size: var(--font-2xl);
+  }
+  .button {
+    padding: var(--spacing-sm);
+    font-size: var(--font-base);
+  }
+}

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "ps5-reg-001",
+    "jenis": "Reguler",
+    "nomor_seri": "SN-REG-001",
+    "spesifikasi": "Model standar dengan disc drive. Penyimpanan 825GB SSD.",
+    "daftar_game": ["Spider-Man: Miles Morales", "Horizon Forbidden West", "FIFA 24", "Grand Theft Auto V"],
+    "kondisi": "Sangat Baik",
+    "harga_sewa": 25000,
+    "foto_url": "https://superlive.id/storage/articles/6394b015-d8e3-4e68-989c-2d34a26e59af.png",
+    "status": "Tersedia",
+    "created_at": {
+      "__type__": "timestamp",
+      "seconds": 1678886400,
+      "nanoseconds": 0
+    },
+    "updated_at": {
+      "__type__": "timestamp",
+      "seconds": 1678886400,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "id": "ps5-reg-003",
+    "jenis": "Reguler",
+    "nomor_seri": "SN-REG-003",
+    "spesifikasi": "Model standar dengan disc drive. Penyimpanan 825GB SSD.",
+    "daftar_game": ["Assassin's Creed Mirage", "Diablo IV"],
+    "kondisi": "Sangat Baik",
+    "harga_sewa": 25000,
+    "foto_url": "https://superlive.id/storage/articles/6394b015-d8e3-4e68-989c-2d34a26e59af.png",
+    "status": "Sedang Disewa",
+    "created_at": {
+      "__type__": "timestamp",
+      "seconds": 1679059200,
+      "nanoseconds": 0
+    },
+    "updated_at": {
+      "__type__": "timestamp",
+      "seconds": 1679059200,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "id": "ps5-slim-004",
+    "jenis": "Slim",
+    "nomor_seri": "SN-SLIM-004",
+    "spesifikasi": "Versi lebih ramping dan ringan. Penyimpanan 1TB SSD.",
+    "daftar_game": ["Final Fantasy VII Rebirth", "Alan Wake 2"],
+    "kondisi": "Baru",
+    "harga_sewa": 28000,
+    "foto_url": "https://media.direct.playstation.com/is/image/sierialto/ps5-slim-model-hero-new",
+    "status": "Tersedia",
+    "created_at": {
+      "__type__": "timestamp",
+      "seconds": 1679145600,
+      "nanoseconds": 0
+    },
+    "updated_at": {
+      "__type__": "timestamp",
+      "seconds": 1679145600,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "id": "ps5-pro-005",
+    "jenis": "Pro",
+    "nomor_seri": "SN-PRO-005",
+    "spesifikasi": "Model performa tinggi untuk grafis 4K lebih baik. Penyimpanan 1TB SSD.",
+    "daftar_game": ["Cyberpunk 2077", "Elden Ring", "Marvel's Spider-Man 2"],
+    "kondisi": "Sangat Baik",
+    "harga_sewa": 35000,
+    "foto_url": "https://media.direct.playstation.com/is/image/sierialto/PS5PRO-Hero-1",
+    "status": "Dalam Perbaikan",
+    "created_at": {
+      "__type__": "timestamp",
+      "seconds": 1679232000,
+      "nanoseconds": 0
+    },
+    "updated_at": {
+      "__type__": "timestamp",
+      "seconds": 1679232000,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "id": "ps5-reg-006",
+    "jenis": "Reguler",
+    "nomor_seri": "SN-REG-006",
+    "spesifikasi": "Model standar dengan disc drive. Dilengkapi 2 controller.",
+    "daftar_game": ["Hogwarts Legacy", "Starfield (Xbox Version but placeholder)"],
+    "kondisi": "Baik",
+    "harga_sewa": 26000,
+    "foto_url": "https://superlive.id/storage/articles/6394b015-d8e3-4e68-989c-2d34a26e59af.png",
+    "status": "Tersedia",
+    "created_at": {
+      "__type__": "timestamp",
+      "seconds": 1679318400,
+      "nanoseconds": 0
+    },
+    "updated_at": {
+      "__type__": "timestamp",
+      "seconds": 1679318400,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "id": "ps5-black-009",
+    "jenis": "Reguler",
+    "nomor_seri": "SN-BLACK-009",
+    "spesifikasi": "PS5 Reguler edisi kustom hitam.",
+    "daftar_game": ["Demon's Souls Remake"],
+    "kondisi": "Baru",
+    "harga_sewa": 30000,
+    "foto_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHSu7589ylzx_cZeytE2tc8d2LYuCAELfDrA&s",
+    "status": "Tersedia",
+    "created_at": {
+      "__type__": "timestamp",
+      "seconds": 1679577600,
+      "nanoseconds": 0
+    },
+    "updated_at": {
+      "__type__": "timestamp",
+      "seconds": 1679577600,
+      "nanoseconds": 0
+    }
+  },
+  {
+    "id": "ps5-slim-008",
+    "jenis": "Slim",
+    "nomor_seri": "SN-SLIM-008",
+    "spesifikasi": "Versi lebih ramping dan ringan. Cocok untuk travelling.",
+    "daftar_game": ["God of War (2018)", "The Last of Us Part I"],
+    "kondisi": "Baik",
+    "harga_sewa": 27000,
+    "foto_url": "https://media.direct.playstation.com/is/image/sierialto/ps5-slim-model-hero-new",
+    "status": "Reserved",
+    "created_at": {
+      "__type__": "timestamp",
+      "seconds": 1679491200,
+      "nanoseconds": 0
+    },
+    "updated_at": {
+      "__type__": "timestamp",
+      "seconds": 1679491200,
+      "nanoseconds": 0
+    }
+  }
+]

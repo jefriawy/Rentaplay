@@ -1,0 +1,252 @@
+/* frontend/src/styles/pages/AdminDashboard.module.css */
+
+.container {
+  padding: var(--spacing-xl);
+  background-color: var(--pale-white);
+  min-height: calc(100vh - 70px); 
+}
+
+.title {
+  text-align: center;
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section {
+  background-color: var(--clean-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.sectionTitle {
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  font-size: var(--font-2xl);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  text-align: left;
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-sm);
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-base);
+  color: var(--gray-800);
+  background-color: var(--clean-white);
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(var(--primary-green-rgb, 76, 175, 80), 0.25);
+}
+
+.button {
+  background-color: var(--primary-green);
+  color: var(--clean-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-lg);
+  font-weight: 600;
+  width: 100%;
+  margin-top: var(--spacing-md);
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--primary-dark-green);
+  transform: translateY(-2px);
+}
+
+.buttonDisabled {
+  background-color: var(--gray-400);
+  cursor: not-allowed;
+}
+
+.secondaryButton {
+  background-color: var(--clean-white);
+  color: var(--primary-green);
+  border: 1px solid var(--primary-green);
+}
+
+.secondaryButton:hover {
+  background-color: var(--primary-light-green);
+  color: var(--clean-white);
+}
+
+.dangerButton {
+  background-color: var(--danger-color);
+  color: var(--clean-white);
+}
+
+.dangerButton:hover {
+  background-color: #C82333; 
+}
+
+.errorMessage {
+  color: var(--danger-color);
+  font-size: var(--font-sm);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.successMessage {
+  color: var(--success-color);
+  font-size: var(--font-sm);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Tabel Styling */
+.tableContainer {
+  overflow-x: auto; 
+  margin-top: var(--spacing-xl);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-sm);
+}
+
+.table th, .table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--gray-200);
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: var(--font-xs);
+  letter-spacing: 0.05em;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--gray-50); 
+}
+
+.table tbody tr:hover {
+  background-color: var(--gray-100);
+}
+
+.table td .actionButtons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.table td .actionButton {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-xs);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* PERBAIKAN DI SINI: Mengubah warna tombol Edit menjadi kuning */
+.table td .actionButton.edit {
+  background-color: var(--warning-color); /* Kuning */
+  color: var(--gray-900); /* Teks hitam atau abu-abu gelap agar kontras dengan kuning */
+}
+
+.table td .actionButton.edit:hover {
+  background-color: #e6a000; /* Kuning lebih gelap saat hover */
+}
+
+/* Memastikan warna tombol Delete tetap terlihat jelas */
+.table td .actionButton.delete {
+  background-color: var(--danger-color); 
+  color: var(--clean-white); 
+}
+
+.table td .actionButton.delete:hover {
+  background-color: #C82333; 
+}
+
+/* Modal Styling */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto; 
+  padding: var(--spacing-md); 
+}
+
+.modalContent {
+  background-color: var(--clean-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  max-height: 90vh; 
+  overflow-y: auto; 
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: none;
+  border: none;
+  font-size: var(--font-xl);
+  cursor: pointer;
+  color: var(--gray-500);
+}
+
+.closeButton:hover {
+  color: var(--gray-700);
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  .section {
+    padding: var(--spacing-md);
+  }
+  .sectionTitle {
+    font-size: var(--font-xl);
+  }
+  .table th, .table td {
+    padding: var(--spacing-sm);
+  }
+}
