@@ -75,7 +75,6 @@ const createRental = async (req, res) => {
       alamat_pengiriman, 
       nomor_kontak, 
       total_biaya,
-      status 
     } = req.body;
 
     // Validasi input
@@ -90,6 +89,8 @@ const createRental = async (req, res) => {
       return res.status(409).json({ message: 'Unit PS5 tidak tersedia atau statusnya berubah.' });
     }
 
+    const confirmationExpiresAt = new Date(new Date().getTime() + 30 * 60 * 1000);
+
     // Buat objek rental baru
     const newRental = {
       user_id,
@@ -100,10 +101,11 @@ const createRental = async (req, res) => {
       alamat_pengiriman,
       nomor_kontak,
       total_biaya: Number(total_biaya),
-      status: status || 'Menunggu Pembayaran', // Status awal
+      status: 'Menunggu Konfirmasi', // Status awal
       transaction_id: '', // Akan diisi setelah proses pembayaran dummy/nyata
       created_at: new Date(),
       updated_at: new Date(),
+      konfirmasi_kadaluarsa_at: confirmationExpiresAt,
       waktu_mulai_sewa: null, // Akan diisi saat status 'Sedang Disewa'
       waktu_selesai_sewa: null, // Akan diisi saat status 'Selesai'
       catatan_admin: '' // Catatan dari admin
@@ -118,7 +120,7 @@ const createRental = async (req, res) => {
     });
 
     res.status(201).json({ 
-      message: 'Pesanan sewa berhasil dibuat!', 
+      message: 'Pesanan berhasil dibuat! Menunggu konfirmasi dari admin.', 
       rental: { id: docRef.id, ...newRental } 
     });
 
@@ -128,7 +130,118 @@ const createRental = async (req, res) => {
   }
 };
 
+// Fungsi untuk mengambil semua pesanan milik satu pengguna
+const getUserRentals = async (req, res) => {
+  try {
+    const userId = req.user.uid; // Ambil UID dari token yang sudah diverifikasi
+
+    const rentalsRef = db.collection('rentals');
+    const snapshot = await rentalsRef
+      .where('user_id', '==', userId)
+      .orderBy('created_at', 'desc') // Tampilkan yang terbaru di atas
+      .get();
+
+    if (snapshot.empty) {
+      return res.status(200).json({
+        message: 'Anda belum memiliki riwayat pesanan.',
+        rentals: []
+      });
+    }
+
+    const rentals = snapshot.docs.map(doc => {
+      const data = doc.data();
+      // Lakukan pengecekan sebelum mengubah format tanggal
+      return {
+        id: doc.id,
+        ...data,
+        // Konversi timestamp Firestore ke format string ISO agar mudah di-parse di frontend
+        created_at: data.created_at && data.created_at.toDate ? data.created_at.toDate().toISOString() : null,
+        updated_at: data.updated_at && data.updated_at.toDate ? data.updated_at.toDate().toISOString() : null,
+        konfirmasi_kadaluarsa_at: data.konfirmasi_kadaluarsa_at && data.konfirmasi_kadaluarsa_at.toDate ? data.konfirmasi_kadaluarsa_at.toDate().toISOString() : null,
+      }
+    });
+
+    res.status(200).json({
+      message: 'Riwayat pesanan berhasil diambil.',
+      rentals
+    });
+
+    } catch (error) {
+    console.error('Error fetching user rentals:', error);
+    res.status(500).json({ message: 'Gagal mengambil riwayat pesanan.', error: error.message });
+  }
+};
+
+// [ADMIN] Mengambil semua pesanan (bisa difilter by status)
+const getAllRentals = async (req, res) => {
+  try {
+    const { status } = req.query; // Ambil query parameter ?status=...
+    let rentalsQuery = db.collection('rentals');
+
+    if (status) {
+      rentalsQuery = rentalsQuery.where('status', '==', status);
+    }
+    
+    const snapshot = await rentalsQuery.orderBy('created_at', 'desc').get();
+
+    const rentals = snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id, ...data,
+        created_at: data.created_at.toDate().toISOString(),
+        updated_at: data.updated_at.toDate().toISOString(),
+        konfirmasi_kadaluarsa_at: data.konfirmasi_kadaluarsa_at ? data.konfirmasi_kadaluarsa_at.toDate().toISOString() : null,
+      }
+    });
+    res.status(200).json({ rentals });
+  } catch (error) {
+    console.error('Error fetching all rentals:', error);
+    res.status(500).json({ message: 'Gagal mengambil semua pesanan.', error: error.message });
+  }
+};
+
+// ADMIN Mengubah status pesanan (Konfirmasi / Tolak)
+const updateRentalStatus = async (req, res) => {
+  try {
+    const { rentalId } = req.params;
+    const { status, catatan_admin } = req.body; // status baru: 'Dikonfirmasi' atau 'Ditolak'
+
+    if (!status || !['Dikonfirmasi', 'Ditolak'].includes(status)) {
+      return res.status(400).json({ message: 'Status tidak valid. Harus "Dikonfirmasi" atau "Ditolak".' });
+    }
+
+    const rentalRef = db.collection('rentals').doc(rentalId);
+    const rentalDoc = await rentalRef.get();
+
+    if (!rentalDoc.exists) {
+      return res.status(404).json({ message: 'Pesanan tidak ditemukan.' });
+    }
+
+    // Jika pesanan ditolak, kembalikan status PS5 menjadi 'Tersedia'
+    if (status === 'Ditolak') {
+      const unitId = rentalDoc.data().unit_id;
+      const ps5UnitRef = db.collection('ps5_units').doc(unitId);
+      await ps5UnitRef.update({ status: 'Tersedia' });
+    }
+
+    await rentalRef.update({
+      status: status,
+      catatan_admin: catatan_admin || '',
+      updated_at: new Date()
+    });
+
+    res.status(200).json({ message: `Pesanan berhasil diubah menjadi "${status}".` });
+
+  } catch (error) {
+    console.error('Error updating rental status:', error);
+    res.status(500).json({ message: 'Gagal mengubah status pesanan.', error: error.message });
+  }
+};
+
 module.exports = {
   checkAvailability,
-  createRental
+  createRental,
+  getUserRentals,
+  getAllRentals,
+  updateRentalStatus
 };

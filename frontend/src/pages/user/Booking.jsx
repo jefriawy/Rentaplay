@@ -146,7 +146,7 @@ const Booking = () => {
         alamat_pengiriman: alamatPengiriman,
         nomor_kontak: nomorKontak,
         total_biaya: totalBiaya,
-        status: 'Menunggu Pembayaran', 
+        // Status tidak perlu dikirim dari frontend lagi, karena sudah diatur di backend
         transaction_id: '' 
       };
 
@@ -165,12 +165,12 @@ const Booking = () => {
       }
 
       const rentalResult = await createRentalResponse.json();
-      console.log('Rental created:', rentalResult);
-      setBookingMessage('Pesanan sewa berhasil dibuat! Anda akan diarahkan ke halaman pembayaran.');
+      console.log('Rental created, waiting for confirmation:', rentalResult);
+      setBookingMessage('Pesanan berhasil dibuat! Anda akan diarahkan ke dashboard untuk menunggu konfirmasi admin.');
       setBookingMessageType('success');
-      alert('Pesanan berhasil dibuat. Anda akan diarahkan ke halaman pembayaran.');
+      alert('Pesanan berhasil dibuat! Silakan cek dashboard Anda untuk status konfirmasi dari admin.');
 
-      navigate(`/payment/${rentalResult.rental.id}`, { state: { rentalId: rentalResult.rental.id, totalBiaya: rentalResult.rental.total_biaya } });
+      navigate('/dashboard', { replace: true });
 
     } catch (err) {
       console.error('Booking Error:', err);

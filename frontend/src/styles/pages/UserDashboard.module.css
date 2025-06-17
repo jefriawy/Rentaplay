@@ -1,0 +1,43 @@
+/* frontend/src/styles/pages/UserDashboard.module.css */
+
+.container {
+  padding: var(--spacing-xl);
+  background-color: var(--pale-white);
+  min-height: calc(100vh - 70px);
+}
+
+.title {
+  text-align: center;
+  color: var(--primary-green);
+  font-size: var(--font-3xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section {
+  background-color: var(--clean-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: var(--font-xl);
+  color: var(--gray-800);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.ordersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+}

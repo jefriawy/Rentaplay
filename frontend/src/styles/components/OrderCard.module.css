@@ -1,0 +1,118 @@
+.card {
+  background-color: var(--clean-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-md);
+  border-left: 5px solid var(--gray-400);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: var(--spacing-lg);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.statusWaiting { border-color: #ffc107; } /* Kuning */
+.statusSuccess { border-color: #28a745; } /* Hijau */
+.statusFailed { border-color: #dc3545; } /* Merah */
+.statusRented { border-color: #17a2b8; } /* Biru */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-200);
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.header h3 {
+  margin: 0;
+  font-size: var(--font-lg);
+  color: var(--gray-800);
+}
+
+.statusBadge {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-xl);
+  color: var(--clean-white);
+  background-color: var(--gray-500);
+}
+
+.statusWaiting .statusBadge { background-color: #ffc107; color: var(--gray-900); }
+.statusSuccess .statusBadge { background-color: #28a745; }
+.statusFailed .statusBadge { background-color: #dc3545; }
+.statusRented .statusBadge { background-color: #17a2b8; }
+
+.body p {
+  font-size: var(--font-sm);
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-xs);
+}
+
+.body p strong {
+  color: var(--gray-800);
+  min-width: 110px;
+  display: inline-block;
+}
+
+.footer {
+  margin-top: var(--spacing-md);
+  text-align: right;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.countdown {
+  font-size: var(--font-base);
+  font-weight: 500;
+  color: var(--primary-blue);
+}
+.countdown span {
+  font-weight: 700;
+  background-color: var(--gray-100);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+}
+
+.infoTextFailed {
+    font-size: var(--font-sm);
+    color: var(--danger-color);
+    font-weight: 500;
+}
+
+.paymentButton {
+  background-color: var(--primary-green);
+  color: var(--clean-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  border: none;
+}
+
+.paymentButton:hover {
+  background-color: var(--primary-dark-green);
+}
+
+.adminNote {
+  margin-top: 4px !important; /* Memberi sedikit jarak */
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--gray-600);
+  background-color: var(--gray-100);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  text-align: left;
+}
+
+.adminNote strong {
+    font-style: normal;
+}

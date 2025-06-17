@@ -14,6 +14,7 @@ import Catalog from './pages/user/Catalog';
 import Booking from './pages/user/Booking'; // <-- IMPOR HALAMAN BOOKING
 import AdminDashboard from './pages/admin/AdminDashboard'; 
 import PS5Management from './pages/admin/PS5Management'; 
+import OrderManagement from './pages/admin/OrderManagement';
 
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { useAuth } from './context/AuthContext'; 
@@ -59,6 +60,7 @@ function App() {
             <Route path="/admin-login" element={<Login adminOnly={true} />} /> 
             <Route path="/admin/dashboard" element={<ProtectedRoute adminOnly={true}><AdminDashboard /></ProtectedRoute>} />
             <Route path="/admin/ps5-management" element={<ProtectedRoute adminOnly={true}><PS5Management /></ProtectedRoute>} />
+            <Route path="/admin/order-management" element={<ProtectedRoute adminOnly={true}><OrderManagement /></ProtectedRoute>} />
 
             <Route path="*" element={<p style={{ textAlign: 'center', marginTop: '50px', fontSize: '2rem', color: 'var(--gray-700)' }}>404 - Halaman Tidak Ditemukan</p>} />
           </Routes>
